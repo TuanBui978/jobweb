@@ -8,7 +8,7 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 RUN sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml
 
 # 4. Copy file WAR của bạn vào và đổi tên thành ROOT.war (để chạy ngay trang chủ)
-COPY app.war /usr/local/tomcat/webapps/ROOT.war
+COPY jobweb.war /usr/local/tomcat/webapps/ROOT.war
 
 # 5. Mở cổng 8080
 EXPOSE 8080
