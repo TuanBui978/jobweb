@@ -1,17 +1,17 @@
-# 1. Dùng Tomcat 10 và Java 17
+# Dùng Tomcat 10 (để chạy Jakarta) và Java 21 (để đọc file .class của bạn)
 FROM tomcat:10.1-jdk21
 
-# 2. Xóa các app mặc định của Tomcat cho nhẹ
+# Xóa app mặc định
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# 3. Tắt cổng Shutdown 8005 để tránh báo lỗi Warning
+# Tắt cổng shutdown 8005 để server ổn định trên Cloud
 RUN sed -i 's/port="8005"/port="-1"/' /usr/local/tomcat/conf/server.xml
 
-# 4. Copy file WAR của bạn vào và đổi tên thành ROOT.war (để chạy ngay trang chủ)
+# Copy file WAR xịn của bạn vào
 COPY jobweb.war /usr/local/tomcat/webapps/ROOT.war
 
-# 5. Mở cổng 8080
+# Mở cổng 8080
 EXPOSE 8080
 
-# 6. Chạy Tomcat
+# Chạy Tomcat
 CMD ["catalina.sh", "run"]
