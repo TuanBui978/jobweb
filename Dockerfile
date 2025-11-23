@@ -1,5 +1,5 @@
 # 1. Dùng Tomcat 10 và Java 17
-FROM tomcat:10.1.13-jdk17
+FROM tomcat:10.1-jdk21
 
 # 2. Xóa các app mặc định của Tomcat cho nhẹ
 RUN rm -rf /usr/local/tomcat/webapps/*
